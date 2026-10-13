@@ -5,21 +5,21 @@ function compterTachesRestantes(array $taches): int
 {
     $nombre = 0;
     foreach ($taches as $tache) {
-        if ($tache['terminee'] === false) {
+        if (empty($tache['terminee'])) {
             $nombre++;
         }
     }
     return $nombre;
 }
 
-function libellePriorite(string $priorite): string
+function libelleDifficulte(string $difficulte): string
 {
-    if ($priorite === 'haute') {
-        return 'Haute';
-    } elseif ($priorite === 'moyenne') {
-        return 'Moyenne';
+    if ($difficulte === 'facile') {
+        return 'Facile';
+    } elseif ($difficulte === 'moyen') {
+        return 'Moyen';
     }
-    return 'Basse';
+    return 'Difficile';
 }
 
 // Échapper le texte au moment de l'insérer dans du HTML.

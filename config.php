@@ -7,6 +7,3 @@ return [
    'utilisateur' => 'root',
    'mot_de_passe' => '',
 ];
-
-$requete = $pdo->query("SELECT * FROM taches");
-$taches = $requete->fetchAll();

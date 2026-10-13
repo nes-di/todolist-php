@@ -27,7 +27,7 @@ include __DIR__ . '/includes/entete.php';
                 <li class="tache <?= $tache['terminee'] ? 'terminee' : '' ?>">
                     <div>
                         <h3><?= echapper($tache['titre']) ?></h3>
-                        <p>Priorité : <?= echapper(libellePriorite($tache['priorite'])) ?></p>
+                        <p>Difficulté : <?= echapper(libelleDifficulte($tache['difficulte'])) ?></p>
                     </div>
                     <span class="etat"><?= $tache['terminee'] ? 'Terminée' : 'À faire' ?></span>
                 </li>
