@@ -11,6 +11,27 @@ $terminees = $total - $restantes;
 include __DIR__ . '/includes/entete.php';
 ?>
 
+<section class="formulaire-ajout" aria-labelledby="titre-ajout">
+    <h2 id="titre-ajout">Ajouter une tâche</h2>
+    <form method="post" action="ajouter.php">
+        <div>
+            <label for="nom_tache">Nom de la tâche</label>
+            <input id="nom_tache" name="nom_tache" type="text" required>
+        </div>
+
+        <div>
+            <label for="difficulte_tache">Difficulté</label>
+            <select id="difficulte_tache" name="difficulte_tache">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+            </select>
+        </div>
+
+        <button type="submit">Ajouter</button>
+    </form>
+</section>
+
 <section class="statistiques" aria-label="Résumé des tâches">
     <div><strong><?= $total ?></strong><span>Au total</span></div>
     <div><strong><?= $restantes ?></strong><span>À faire</span></div>

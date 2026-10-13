@@ -9,3 +9,4 @@ $requete = $pdo->query(
      FROM tache'
 );
 $taches = $requete->fetchAll();
+ 

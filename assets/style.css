@@ -9,6 +9,13 @@ header > p:last-child, footer { color: #52627a; line-height: 1.6; }
 .statistiques div { background: #fff; border: 1px solid #dce3ef; border-radius: 14px; padding: 20px; }
 .statistiques strong { display: block; font-size: 2rem; color: #4650b3; }
 .statistiques span { font-size: .9rem; }
+.formulaire-ajout { background: #fff; border: 1px solid #dce3ef; border-radius: 16px; padding: 24px; margin: 24px 0; }
+.formulaire-ajout form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(150px, .5fr) auto; gap: 12px; align-items: end; }
+.formulaire-ajout label { display: block; margin-bottom: 6px; font-size: .9rem; font-weight: 600; }
+.formulaire-ajout input, .formulaire-ajout select { width: 100%; min-height: 44px; padding: 9px 11px; border: 1px solid #b9c4d4; border-radius: 6px; background: #fff; color: #213047; font: inherit; }
+.formulaire-ajout input:focus, .formulaire-ajout select:focus { outline: 3px solid #dce0ff; border-color: #4650b3; }
+.formulaire-ajout button { min-height: 44px; padding: 9px 18px; border: 0; border-radius: 6px; background: #4650b3; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.formulaire-ajout button:hover { background: #343d96; }
 .liste { background: white; border: 1px solid #dce3ef; border-radius: 16px; padding: 24px; }
 h2 { margin-top: 0; font-size: 1.3rem; }
 ul { list-style: none; padding: 0; margin: 0; }
@@ -22,3 +29,4 @@ h3 { margin: 0 0 6px; font-size: 1rem; }
 footer { margin-top: 24px; font-size: .9rem; }
 code { background: #e4e9f2; padding: 2px 5px; border-radius: 4px; }
 @media (max-width: 480px) { .conteneur { padding: 28px 16px; } .statistiques div { padding: 12px; } .tache { align-items: flex-start; } }
+@media (max-width: 600px) { .formulaire-ajout { padding: 18px; } .formulaire-ajout form { grid-template-columns: 1fr; } .formulaire-ajout button { width: 100%; } }
