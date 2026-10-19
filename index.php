@@ -1,5 +1,19 @@
 <?php
-// __DIR__ désigne le dossier de ce fichier, quel que soit le dossier de lancement.
+// Démarre la session avant de générer la page.
+session_start();
+
+// Récupère le message, puis l'efface pour qu'il ne réapparaisse pas.
+$message = $_SESSION['message'] ?? null;
+unset($_SESSION['message']);
+
+// Lit le filtre dans l'URL ; sans paramètre, toutes les tâches sont affichées.
+$etat = $_GET['etat'] ?? 'toutes';
+// N'accepte que les filtres prévus ; toute autre valeur revient à « toutes ».
+if (!in_array($etat, ['toutes', 'a-faire', 'terminees'], true)) {
+    $etat = 'toutes';
+}
+
+// donnees.php utilise $etat pour choisir les tâches à charger.
 require __DIR__ . '/donnees.php';
 require __DIR__ . '/fonctions.php';
 
@@ -32,16 +46,25 @@ include __DIR__ . '/includes/entete.php';
     </form>
 </section>
 
+<?php if ($message !== null): ?>
+    <p class="message"><?= echapper($message) ?></p>
+<?php endif; ?>
+
 <section class="statistiques" aria-label="Résumé des tâches">
-    <div><strong><?= $total ?></strong><span>Au total</span></div>
+    <div><strong><?= $total ?></strong><span>Affichées</span></div>
     <div><strong><?= $restantes ?></strong><span>À faire</span></div>
     <div><strong><?= $terminees ?></strong><span>Terminées</span></div>
 </section>
 
 <section class="liste" aria-labelledby="titre-liste">
     <h2 id="titre-liste">Mes tâches</h2>
+    <nav class="filtres" aria-label="Filtrer les tâches">
+        <a href="index.php?etat=toutes" <?= $etat === 'toutes' ? 'aria-current="page"' : '' ?>>Toutes les tâches</a>
+        <a href="index.php?etat=a-faire" <?= $etat === 'a-faire' ? 'aria-current="page"' : '' ?>>Les tâches à faire</a>
+        <a href="index.php?etat=terminees" <?= $etat === 'terminees' ? 'aria-current="page"' : '' ?>>Les tâches terminées</a>
+    </nav>
     <?php if (empty($taches)): ?>
-        <p class="message">Aucune tâche pour le moment.</p>
+        <p class="message"><?= $etat === 'toutes' ? 'Aucune tâche pour le moment.' : 'Aucune tâche ne correspond à ce filtre.' ?></p>
     <?php else: ?>
         <ul>
             <?php foreach ($taches as $tache): ?>
@@ -54,7 +77,7 @@ include __DIR__ . '/includes/entete.php';
                 </li>
             <?php endforeach; ?>
         </ul>
-        <?php if ($restantes === 0): ?>
+        <?php if ($etat === 'toutes' && $restantes === 0): ?>
             <p class="message">Bravo, toutes les tâches sont terminées !</p>
         <?php endif; ?>
     <?php endif; ?>
