@@ -15,4 +15,8 @@ class Tache
     {
         $this->terminee = true;
     }
+    public function remettreAFaire(): void
+    {
+        $this->terminee = false;
+    }
 }

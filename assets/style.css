@@ -1,6 +1,6 @@
-:root { color-scheme: light; font-family: system-ui, sans-serif; color: #213047; background: #f1f4fa; }
+:root { color-scheme: light; font-family: system-ui, sans-serif; }
 * { box-sizing: border-box; }
-body { margin: 0; }
+body { margin: 0; color: #213047; background: #f1f4fa; }
 .conteneur { max-width: 850px; padding: 48px 24px; margin: auto; }
 .sur-titre { color: #4c56b8; font-size: .75rem; letter-spacing: .14em; font-weight: 700; }
 h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 10px 0; }
@@ -16,6 +16,13 @@ header > p:last-child, footer { color: #52627a; line-height: 1.6; }
 .formulaire-ajout input:focus, .formulaire-ajout select:focus { outline: 3px solid #dce0ff; border-color: #4650b3; }
 .formulaire-ajout button { min-height: 44px; padding: 9px 18px; border: 0; border-radius: 6px; background: #4650b3; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
 .formulaire-ajout button:hover { background: #343d96; }
+.preference-theme { margin: 24px 0; }
+.preference-theme h2 { margin-bottom: 12px; }
+.preference-theme form { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.preference-theme label { display: block; margin-bottom: 6px; font-size: .9rem; font-weight: 600; }
+.preference-theme select { min-height: 44px; padding: 9px 11px; border: 1px solid #b9c4d4; border-radius: 6px; background: #fff; color: #213047; font: inherit; }
+.preference-theme button { min-height: 44px; padding: 9px 18px; border: 0; border-radius: 6px; background: #4650b3; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.preference-theme button:hover { background: #343d96; }
 .liste { background: white; border: 1px solid #dce3ef; border-radius: 16px; padding: 24px; }
 h2 { margin-top: 0; font-size: 1.3rem; }
 .filtres { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
@@ -29,6 +36,16 @@ h3 { margin: 0 0 6px; font-size: 1rem; }
 .terminee h3 { text-decoration: line-through; color: #52627a; }
 .terminee .etat { background: #ddf4e8; color: #236448; }
 .message { padding: 16px; background: #f1f4fa; border-radius: 8px; }
+.theme-sombre { color-scheme: dark; color: #e8ebf2; background: #191c25; }
+.theme-sombre header > p:last-child, .theme-sombre footer, .theme-sombre .tache p { color: #aeb6c5; }
+.theme-sombre .statistiques div, .theme-sombre .formulaire-ajout, .theme-sombre .liste { background: #242936; border-color: #3b4352; }
+.theme-sombre .statistiques strong { color: #aab2ff; }
+.theme-sombre .formulaire-ajout input, .theme-sombre .formulaire-ajout select, .theme-sombre .preference-theme select { background: #191c25; border-color: #505a6d; color: #e8ebf2; }
+.theme-sombre .filtres a { border-color: #505a6d; color: #c5caff; }
+.theme-sombre .filtres a:hover, .theme-sombre .filtres a[aria-current="page"] { color: #fff; }
+.theme-sombre .tache { border-color: #3b4352; }
+.theme-sombre .message, .theme-sombre code { background: #303747; }
+.theme-sombre .terminee h3 { color: #aeb6c5; }
 footer { margin-top: 24px; font-size: .9rem; }
 code { background: #e4e9f2; padding: 2px 5px; border-radius: 4px; }
 @media (max-width: 480px) { .conteneur { padding: 28px 16px; } .statistiques div { padding: 12px; } .tache { align-items: flex-start; } }

@@ -6,7 +6,7 @@
     <title><?= echapper($titrePage) ?></title>
     <link rel="stylesheet" href="assets/style.css?v=2">
 </head>
-<body>
+<body class="theme-<?= echapper($theme) ?>">
 <main class="conteneur">
     <header>
         <p class="sur-titre">MON PREMIER PROJET PHP</p>

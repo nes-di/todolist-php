@@ -2,6 +2,24 @@
 // Démarre la session avant de générer la page.
 session_start();
 
+// Enregistre seulement les deux thèmes autorisés, avant tout affichage HTML.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['theme'])) {
+    $themeChoisi = $_POST['theme'];
+
+    if (is_string($themeChoisi) && in_array($themeChoisi, ['clair', 'sombre'], true)) {
+        setcookie('theme', $themeChoisi, time() + 7 * 24 * 60 * 60, '/');
+    }
+
+    header('Location: index.php');
+    exit;
+}
+
+// Lit le cookie ; une valeur absente ou invalide utilise le thème clair.
+$theme = $_COOKIE['theme'] ?? 'clair';
+if (!is_string($theme) || !in_array($theme, ['clair', 'sombre'], true)) {
+    $theme = 'clair';
+}
+
 // Récupère le message, puis l'efface pour qu'il ne réapparaisse pas.
 $message = $_SESSION['message'] ?? null;
 unset($_SESSION['message']);
@@ -43,6 +61,20 @@ include __DIR__ . '/includes/entete.php';
         </div>
 
         <button type="submit">Ajouter</button>
+    </form>
+</section>
+
+<section class="preference-theme" aria-labelledby="titre-theme">
+    <h2 id="titre-theme">Préférence d'affichage</h2>
+    <form method="post" action="index.php">
+        <div>
+            <label for="theme">Thème</label>
+            <select id="theme" name="theme">
+                <option value="clair" <?= $theme === 'clair' ? 'selected' : '' ?>>Clair</option>
+                <option value="sombre" <?= $theme === 'sombre' ? 'selected' : '' ?>>Sombre</option>
+            </select>
+        </div>
+        <button type="submit">Enregistrer</button>
     </form>
 </section>
 
